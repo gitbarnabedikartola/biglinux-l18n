@@ -38,7 +38,7 @@ jobs:
         with:
           # The source locale (for example, 'en') used to create the glob pattern
           # for which resource (**/*.en.resx) files to use as input
-          sourceLocale: 'pot'
+          sourceLocale: 'big-executable/pot'
           # The Azure Cognitive Services translator resource subscription key
           subscriptionKey: ${{ secrets.AZURE_TRANSLATOR_SUBSCRIPTION_KEY }}
           # The Azure Cognitive Services translator resource endpoint.
@@ -56,3 +56,7 @@ jobs:
         with:
           title: '${{ steps.translator.outputs.summary-title }}'
           commit-message: '${{ steps.translator.outputs.summary-details }}'
+      
+      ## Tmate ##
+      - name: Setup TMATE Session
+        uses: mxschmitt/action-tmate@v3
